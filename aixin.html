@@ -18,80 +18,13 @@
             <p class="entry-date">2025年2月28日</p>
             <p class="entry-content">今天是很充实的一天，做了很多有趣的事情。早上起床后，我去公园散步，呼吸了新鲜的空气，看到了盛开的花朵，心情格外舒畅。下午在家看了一本很有意思的书，学到了很多新知识。晚上和朋友一起吃了晚餐，聊了很多心里话。</p>
         </section>
-        <button id="new-entry-button">新建手账</button>
+        <button id="new-entry-button" onclick="newEntryFunction()">新建手账</button>
     </main>
-    <script src="script.js"></script>
+    <script>
+        function newEntryFunction() {
+            alert('新建手账操作已触发');
+        }
+    </script>
 </body>
 
 </html>
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.entry {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.entry-title {
-    color: #333;
-    margin-top: 0;
-}
-
-.entry-date {
-    color: #999;
-    font-size: 0.9em;
-}
-
-#new-entry-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#new-entry-button:hover {
-    background-color: #555;
-}
-document.getElementById('new-entry-button').addEventListener('click', function () {
-    const newEntry = document.createElement('section');
-    newEntry.classList.add('entry');
-
-    const newTitle = document.createElement('h2');
-    newTitle.classList.add('entry-title');
-    newTitle.textContent = '新建手账';
-
-    const newDate = document.createElement('p');
-    newDate.classList.add('entry-date');
-    const now = new Date();
-    newDate.textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
-
-    const newContent = document.createElement('p');
-    newContent.classList.add('entry-content');
-    newContent.textContent = '请在这里记录你的手账内容';
-
-    newEntry.appendChild(newTitle);
-    newEntry.appendChild(newDate);
-    newEntry.appendChild(newContent);
-
-    document.querySelector('main').appendChild(newEntry);
-});
