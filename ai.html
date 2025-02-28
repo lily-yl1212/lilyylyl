@@ -1,47 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    overflow: hidden;
-}
-
-.heart {
-    position: absolute;
-    font-size: 20px;
-    color: red;
-    animation: fall 2s linear;
-}
-
-@keyframes fall {
-    from {
-        top: -50px;
-    }
-
-    to {
-        top: 100vh;
-    }
-}
-
-// 创建爱心元素
-function createHeart(x, y) {
-    const heart = document.createElement('span');
-    heart.classList.add('heart');
-    heart.textContent = '💖';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    document.body.appendChild(heart);
-
-    // 动画结束后移除爱心元素
-    heart.addEventListener('animationend', function () {
-        heart.remove();
-    });
-}
-
-// 监听点击事件
-document.addEventListener('click', function (event) {
-    createHeart(event.clientX, event.clientY);
-});
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,12 +5,56 @@ document.addEventListener('click', function (event) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点击冒爱心</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+      .heart {
+            position: absolute;
+            font-size: 20px;
+            color: red;
+            animation: fall 2s linear;
+        }
+
+        @keyframes fall {
+            from {
+                top: -50px;
+            }
+
+            to {
+                top: 100vh;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 </body>
-<script src="script.js"></script>
+<script>
+    // 创建爱心元素
+    function createHeart(x, y) {
+        const heart = document.createElement('span');
+        heart.classList.add('heart');
+        heart.textContent = '💖';
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        document.body.appendChild(heart);
+
+        // 动画结束后移除爱心元素
+        heart.addEventListener('animationend', function () {
+            heart.remove();
+        });
+    }
+
+    // 监听点击事件
+    document.addEventListener('click', function (event) {
+        createHeart(event.clientX, event.clientY);
+    });
+</script>
 
 </html>
