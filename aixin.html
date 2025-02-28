@@ -24,3 +24,74 @@
 </body>
 
 </html>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.entry {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.entry-title {
+    color: #333;
+    margin-top: 0;
+}
+
+.entry-date {
+    color: #999;
+    font-size: 0.9em;
+}
+
+#new-entry-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#new-entry-button:hover {
+    background-color: #555;
+}
+document.getElementById('new-entry-button').addEventListener('click', function () {
+    const newEntry = document.createElement('section');
+    newEntry.classList.add('entry');
+
+    const newTitle = document.createElement('h2');
+    newTitle.classList.add('entry-title');
+    newTitle.textContent = '新建手账';
+
+    const newDate = document.createElement('p');
+    newDate.classList.add('entry-date');
+    const now = new Date();
+    newDate.textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+
+    const newContent = document.createElement('p');
+    newContent.classList.add('entry-content');
+    newContent.textContent = '请在这里记录你的手账内容';
+
+    newEntry.appendChild(newTitle);
+    newEntry.appendChild(newDate);
+    newEntry.appendChild(newContent);
+
+    document.querySelector('main').appendChild(newEntry);
+});
