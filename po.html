@@ -2,334 +2,305 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>舆情分析平台</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舆情分析平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
 
- .navbar {
-      background-color: #007BFF;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+      .navbar {
+            background-color: #007BFF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
- .navbar-brand {
-      font-size: 22px;
-      font-weight: bold;
-      color: white;
-    }
+      .navbar-brand {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
 
- .nav-link {
-      color: white;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
+      .nav-link {
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
 
- .nav-link:hover {
-      color: #e0e0e0;
-    }
+      .nav-link:hover {
+            color: #e0e0e0;
+        }
 
- .section {
-      padding: 50px 0;
-    }
+      .section {
+            padding: 50px 0;
+        }
 
- .section-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      text-align: center;
-      color: #333;
-    }
+      .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
 
- .input-group {
-      margin-bottom: 20px;
-    }
+      .input-group {
+            margin-bottom: 20px;
+        }
 
- .input-group-text {
-      background-color: #f8f9fa;
-      border-color: #dee2e6;
-    }
+      .input-group-text {
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+        }
 
- .form-control {
-      border-color: #dee2e6;
-    }
+      .form-control {
+            border-color: #dee2e6;
+        }
 
- .btn-custom {
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
+      .btn-custom {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
- .btn-custom:hover {
-      background-color: #0056b3;
-    }
+      .btn-custom:hover {
+            background-color: #0056b3;
+        }
 
- .result-area {
-      border: 1px solid #dee2e6;
-      border-radius: 5px;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+      .result-area {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
- .chart-area {
-      margin-top: 30px;
-    }
+      .chart-area {
+            margin-top: 30px;
+        }
 
- .file-upload {
-      display: flex;
-      align-items: center;
-    }
+      .file-upload {
+            display: flex;
+            align-items: center;
+        }
 
- .file-upload input[type="file"] {
-      display: none;
-    }
+      .file-upload input[type="file"] {
+            display: none;
+        }
 
- .file-upload label {
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+      .file-upload label {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
- .file-upload label:hover {
-      background-color: #0056b3;
-    }
-  </style>
+      .file-upload label:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">舆情分析平台</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
-      aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#crawl-data">爬取数据</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#process-text">处理文本</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#generate-word-cloud">生成词云图</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#generate-emotion-chart">生成情绪占比图</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">舆情分析平台</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+            aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#crawl-data">爬取数据</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#process-text">处理文本</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#generate-word-cloud">生成词云图</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#generate-emotion-chart">生成情绪占比图</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-  <!-- 爬取数据模块 -->
-  <section id="crawl-data" class="section">
-    <h2 class="section-title">爬取数据</h2>
-    <div class="container text-center">
-      <a href="https://www.bazhuayu.com/" class="btn-custom">跳转到八爪鱼</a>
-      <a href="https://www.houyicraw.com/" class="btn-custom">跳转到后羿采集器</a>
-      <p class="mt-3">使用爬虫软件前，请确保已安装并配置好相应环境。根据需求设置爬虫任务，爬取相关舆情数据。</p>
-    </div>
-  </section>
+    <!-- 爬取数据模块 -->
+    <section id="crawl-data" class="section">
+        <h2 class="section-title">爬取数据</h2>
+        <div class="container text-center">
+            <a href="https://www.bazhuayu.com/" class="btn-custom">跳转到八爪鱼</a>
+            <a href="https://www.houyicraw.com/" class="btn-custom">跳转到后羿采集器</a>
+            <p class="mt-3">使用爬虫软件前，请确保已安装并配置好相应环境。根据需求设置爬虫任务，爬取相关舆情数据。</p>
+        </div>
+    </section>
 
-  <!-- 处理文本模块 -->
-  <section id="process-text" class="section">
-    <h2 class="section-title">处理文本</h2>
-    <div class="container">
-      <div class="file-upload">
-        <input type="file" id="text-file-upload" accept=".txt">
-        <label for="text-file-upload"><i class="fas fa-file-upload"></i> 上传文本文件</label>
-      </div>
-      <div class="input-group">
-        <textarea class="form-control" id="input-text" placeholder="请输入或粘贴需要处理的文本"
-          style="height: 200px"></textarea>
-      </div>
-      <button class="btn btn-custom" id="process-button">处理文本</button>
-      <div class="result-area" id="process-result"></div>
-      <a href="#" class="btn btn-custom d-none" id="download-result">下载处理结果文件</a>
-    </div>
-  </section>
+    <!-- 处理文本模块 -->
+    <section id="process-text" class="section">
+        <h2 class="section-title">处理文本</h2>
+        <div class="container">
+            <div class="file-upload">
+                <input type="file" id="text-file-upload" accept=".txt">
+                <label for="text-file-upload"><i class="fas fa-file-upload"></i> 上传文本文件</label>
+            </div>
+            <div class="input-group">
+                <textarea class="form-control" id="input-text" placeholder="请输入或粘贴需要处理的文本"
+                    style="height: 200px"></textarea>
+            </div>
+            <button class="btn btn-custom" id="process-button">处理文本</button>
+            <div class="result-area" id="process-result"></div>
+            <a href="#" class="btn btn-custom d-none" id="download-result">下载处理结果文件</a>
+        </div>
+    </section>
 
-  <!-- 生成关键词词云图模块 -->
-  <section id="generate-word-cloud" class="section">
-    <h2 class="section-title">生成关键词词云图</h2>
-    <div class="container">
-      <div class="file-upload">
-        <input type="file" id="word-cloud-file-upload" accept=".txt">
-        <label for="word-cloud-file-upload"><i class="fas fa-file-upload"></i> 上传用于生成词云图的文件</label>
-      </div>
-      <button class="btn btn-custom" id="generate-word-cloud-button">生成词云图</button>
-      <div class="chart-area">
-        <canvas id="word-cloud-chart"></canvas>
-      </div>
-    </div>
-  </section>
+    <!-- 生成关键词词云图模块 -->
+    <section id="generate-word-cloud" class="section">
+        <h2 class="section-title">生成关键词词云图</h2>
+        <div class="container">
+            <div class="file-upload">
+                <input type="file" id="word-cloud-file-upload" accept=".txt">
+                <label for="word-cloud-file-upload"><i class="fas fa-file-upload"></i> 上传用于生成词云图的文件</label>
+            </div>
+            <button class="btn btn-custom" id="generate-word-cloud-button">生成词云图</button>
+            <div class="chart-area">
+                <canvas id="word-cloud-chart"></canvas>
+            </div>
+        </div>
+    </section>
 
-  <!-- 生成情绪占比图模块 -->
-  <section id="generate-emotion-chart" class="section">
-    <h2 class="section-title">生成情绪占比图</h2>
-    <div class="container">
-      <div class="file-upload">
-        <input type="file" id="emotion-chart-file-upload" accept=".txt">
-        <label for="emotion-chart-file-upload"><i class="fas fa-file-upload"></i> 上传用于生成情绪占比图的文件</label>
-      </div>
-      <button class="btn btn-custom" id="generate-emotion-chart-button">生成情绪占比图</button>
-      <div class="chart-area">
-        <canvas id="emotion-chart"></canvas>
-      </div>
-    </div>
-  </section>
+    <!-- 生成情绪占比图模块 -->
+    <section id="generate-emotion-chart" class="section">
+        <h2 class="section-title">生成情绪占比图</h2>
+        <div class="container">
+            <div class="file-upload">
+                <input type="file" id="emotion-chart-file-upload" accept=".txt">
+                <label for="emotion-chart-file-upload"><i class="fas fa-file-upload"></i> 上传用于生成情绪占比图的文件</label>
+            </div>
+            <button class="btn btn-custom" id="generate-emotion-chart-button">生成情绪占比图</button>
+            <div class="chart-area">
+                <canvas id="emotion-chart"></canvas>
+            </div>
+        </div>
+    </section>
 
-  <!-- 页脚 -->
-  <footer class="bg-dark text-white text-center py-3">
-    &copy; 2025 舆情分析平台版权所有
-  </footer>
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 舆情分析平台版权所有
+    </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jieba.js/0.4.2/jieba.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"></script>
-  <script>
-    // 模拟文本清洗函数，去除标点符号和停用词
-    function cleanText(text) {
-      const punctuation = /[^\w\s]/g;
-      const stopwords = ['的', '了', '是', '在', '和', '也', '有', '不', '我', '你', '他', '她', '它', '们'];
-      let cleanedText = text.replace(punctuation, '');
-      const words = cleanedText.split(' ');
-      const filteredWords = words.filter(word => {
-        return word &&!stopwords.includes(word);
-      });
-      return filteredWords.join(' ');
-    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#process-button').click(function () {
+                const formData = new FormData();
+                const file = $('#text-file-upload')[0].files[0];
+                if (file) {
+                    formData.append('textFile', file);
+                } else {
+                    formData.append('inputText', $('#input-text').val());
+                }
 
-    // 模拟情感分析函数，这里是简单示例，实际需更复杂算法
-    function sentimentAnalysis(words) {
-      let positiveCount = 0;
-      let negativeCount = 0;
-      let neutralCount = 0;
-      const positiveWords = ['好', '支持', '喜欢'];
-      const negativeWords = ['坏', '反对', '讨厌'];
-      words.forEach(word => {
-        if (positiveWords.includes(word)) {
-          positiveCount++;
-        } else if (negativeWords.includes(word)) {
-          negativeCount++;
-        } else {
-          neutralCount++;
-        }
-      });
-      return [positiveCount, negativeCount, neutralCount];
-    }
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/process-text',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $('#process-result').html('<p>处理后的文本：</p><p>' + response.result + '</p>');
+                        $('#download-result').removeClass('d-none');
+                        $('#download-result').attr('href', response.downloadLink);
+                    },
+                    error: function (error) {
+                        console.error('处理文本失败', error);
+                    }
+                });
+            });
 
-    $('#process-button').click(function () {
-      let text = '';
-      const file = $('#text-file-upload')[0].files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          text = reader.result;
-          processText(text);
-        };
-        reader.readAsText(file);
-      } else {
-        text = $('#input-text').val();
-        processText(text);
-      }
-    });
+            $('#generate-word-cloud-button').click(function () {
+                const formData = new FormData();
+                const file = $('#word-cloud-file-upload')[0].files[0];
+                if (!file) {
+                    alert('请上传用于生成词云图的文件');
+                    return;
+                }
+                formData.append('wordCloudFile', file);
 
-    function processText(text) {
-      // 分词
-      const segList = jieba.cut(text, true);
-      // 清洗
-      const cleanedWords = cleanText(segList.join(' ')).split(' ');
-      const result = cleanedWords.join(' ');
-      $('#process-result').html('<p>处理后的文本：</p><p>' + result + '</p>');
-      $('#download-result').removeClass('d-none');
-      // 创建Blob对象并生成下载链接
-      const blob = new Blob([result], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      $('#download-result').attr('href', url);
-    }
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/generate-word-cloud',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        const wordCloudChart = echarts.init(document.getElementById('word-cloud-chart'));
+                        const option = {
+                            series: [
+                                {
+                                    type: 'wordCloud',
+                                    shape: 'circle',
+                                    data: response.wordCloudData
+                                }
+                            ]
+                        };
+                        wordCloudChart.setOption(option);
+                    },
+                    error: function (error) {
+                        console.error('生成词云图失败', error);
+                    }
+                });
+            });
 
-    $('#generate-word-cloud-button').click(function () {
-      const file = $('#word-cloud-file-upload')[0].files[0];
-      if (!file) {
-        alert('请上传用于生成词云图的文件');
-        return;
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const text = reader.result;
-        const segList = jieba.cut(text, true);
-        const wordCountMap = {};
-        segList.forEach(word => {
-          if (!wordCountMap[word]) {
-            wordCountMap[word] = 1;
-          } else {
-            wordCountMap[word]++;
-          }
+            $('#generate-emotion-chart-button').click(function () {
+                const formData = new FormData();
+                const file = $('#emotion-chart-file-upload')[0].files[0];
+                if (!file) {
+                    alert('请上传用于生成情绪占比图的文件');
+                    return;
+                }
+                formData.append('emotionChartFile', file);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/generate-emotion-chart',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        const emotionChart = echarts.init(document.getElementById('emotion-chart'));
+                        const option = {
+                            series: [
+                                {
+                                    type: 'pie',
+                                    data: [
+                                        { value: response.emotionCounts[0], name: '正面' },
+                                        { value: response.emotionCounts[1], name: '负面' },
+                                        { value: response.emotionCounts[2], name: '中性' }
+                                    ]
+                                }
+                            ]
+                        };
+                        emotionChart.setOption(option);
+                    },
+                    error: function (error) {
+                        console.error('生成情绪占比图失败', error);
+                    }
+                });
+            });
         });
-        const wordCloudData = [];
-        for (const word in wordCountMap) {
-          wordCloudData.push({ name: word, value: wordCountMap[word] });
-        }
-        const wordCloudChart = echarts.init(document.getElementById('word-cloud-chart'));
-        const option = {
-          series: [
-            {
-              type: 'wordCloud',
-              shape: 'circle',
-              data: wordCloudData
-            }
-          ]
-        };
-        wordCloudChart.setOption(option);
-      };
-      reader.readAsText(file);
-    });
-
-    $('#generate-emotion-chart-button').click(function () {
-      const file = $('#emotion-chart-file-upload')[0].files[0];
-      if (!file) {
-        alert('请上传用于生成情绪占比图的文件');
-        return;
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const text = reader.result;
-        const segList = jieba.cut(text, true);
-        const emotionCounts = sentimentAnalysis(segList);
-        const emotionChart = echarts.init(document.getElementById('emotion-chart'));
-        const option = {
-          series: [
-            {
-              type: 'pie',
-              data: [
-                { value: emotionCounts[0], name: '正面' },
-                { value: emotionCounts[1], name: '负面' },
-                { value: emotionCounts[2], name: '中性' }
-              ]
-            }
-          ]
-        };
-        emotionChart.setOption(option);
-      };
-      reader.readAsText(file);
-    });
-  </script>
+    </script>
 </body>
 
 </html>
