@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舆情分析平台</title>
+  <style>
+    /* 全局样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    /* 顶部区域样式 */
+   .top-area {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+   .logo {
+      font-size: 24px;
+    }
+
+   .page-title {
+      margin: 0;
+    }
+
+    /* 导航栏区域样式 */
+   .navbar {
+      background-color: #343A40;
+      color: white;
+    }
+
+   .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+   .navbar ul li {
+      cursor: pointer;
+    }
+
+    /* 舆情监测看板区域样式 */
+   .monitoring-board {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+  .data-card {
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+      width: 20%;
+    }
+
+    /* 实时舆情列表区域样式 */
+   .real-time-news {
+      padding: 20px;
+    }
+
+  .news-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+  .news-table th,
+  .news-table td {
+      border: 1px solid #dee2e6;
+      padding: 10px;
+      text-align: center;
+    }
+
+  .news-table tr:nth-child(odd) {
+      background-color: #f8f9fa;
+    }
+
+    /* 情感占比分析饼图与关键词云图区域样式 */
+  .analysis-area {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+  .pie-chart,
+  .keyword-cloud {
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 15px;
+      width: 45%;
+    }
+
+    /* 底部区域样式 */
+   .footer {
+      background-color: #343A40;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 顶部区域 -->
+  <div class="top-area">
+    <div class="logo">舆情分析</div>
+    <h1 class="page-title">舆情分析平台</h1>
+  </div>
+  <!-- 导航栏区域 -->
+  <div class="navbar">
+    <ul>
+      <li>首页</li>
+      <li>数据说明</li>
+      <li>联系我们</li>
+    </ul>
+  </div>
+  <!-- 舆情监测看板区域 -->
+  <div class="monitoring-board">
+    <div class="data-card">
+      <h3>今日新增舆情数</h3>
+      <p>100</p>
+    </div>
+    <div class="data-card">
+      <h3>负面舆情占比</h3>
+      <p>20%</p>
+    </div>
+    <div class="data-card">
+      <h3>热门话题数量</h3>
+      <p>10</p>
+    </div>
+    <div class="data-card">
+      <h3>活跃媒体数量</h3>
+      <p>50</p>
+    </div>
+    <div class="data-card">
+      <h3>平均情感倾向</h3>
+      <p>中性</p>
+    </div>
+  </div>
+  <!-- 实时舆情列表区域 -->
+  <div class="real-time-news">
+    <h2>实时舆情列表</h2>
+    <table class="news-table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>发布时间</th>
+          <th>来源媒体</th>
+          <th>舆情内容摘要</th>
+          <th>情感倾向</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2025-03-01 10:00:00</td>
+          <td>新浪新闻</td>
+          <td>某公司发布新产品，引发市场关注</td>
+          <td>中性</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2025-03-01 11:00:00</td>
+          <td>腾讯新闻</td>
+          <td>某明星负面新闻曝光</td>
+          <td>负面</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 情感占比分析饼图与关键词云图区域 -->
+  <div class="analysis-area">
+    <div class="pie-chart">
+      <h2>情感占比分析</h2>
+      <p>正面：30%，负面：20%，中性：50%</p>
+    </div>
+    <div class="keyword-cloud">
+      <h2>关键词云图</h2>
+      <span style="font-size: 16px;">舆情</span>
+      <span style="font-size: 14px;">分析</span>
+      <span style="font-size: 18px;">热点</span>
+    </div>
+  </div>
+  <!-- 底部区域 -->
+  <div class="footer">
+    &copy; 2025 舆情分析平台版权所有
+  </div>
+  <script>
+    // 这里可以添加获取实时数据的 JavaScript 代码
+    // 例如使用 AJAX 或 Fetch API 从后端获取数据并更新页面元素
+    // 示例代码（使用 Fetch API）
+    // fetch('your-api-url')
+    // .then(response => response.json())
+    // .then(data => {
+    //       // 根据获取的数据更新页面元素
+    //       document.querySelector('.data-card:nth-child(1) p').textContent = data.new_news_count;
+    //     });
+  </script>
+</body>
+
+</html>
