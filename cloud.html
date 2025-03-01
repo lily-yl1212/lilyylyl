@@ -17,11 +17,11 @@
             background-color: #f0f0f0;
         }
 
-      .file-upload {
+     .file-upload {
             margin-bottom: 20px;
         }
 
-      .file-upload label {
+     .file-upload label {
             background-color: #007BFF;
             color: white;
             padding: 10px 20px;
@@ -29,11 +29,11 @@
             cursor: pointer;
         }
 
-      .file-upload input[type="file"] {
+     .file-upload input[type="file"] {
             display: none;
         }
 
-      .chart-container {
+     .chart-container {
             width: 80%;
             max-width: 800px;
             height: 400px;
@@ -50,6 +50,7 @@
         <canvas id="word-cloud-chart"></canvas>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jieba.js/0.4.2/jieba.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const fileInput = document.getElementById('file-upload');
@@ -61,7 +62,8 @@
                     const reader = new FileReader();
                     reader.onloadend = function () {
                         const text = reader.result;
-                        const words = text.split(/\s+/);
+                        // 使用jieba进行分词
+                        const words = jieba.cut(text, true);
                         const wordCountMap = {};
                         words.forEach(function (word) {
                             if (wordCountMap[word]) {
