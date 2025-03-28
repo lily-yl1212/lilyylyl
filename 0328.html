@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷幻蘑菇创作之旅</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Microsoft YaHei', sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ff66ff;
+            text-shadow: 0 0 10px rgba(255,102,255,0.5);
+            text-align: center;
+            margin: 30px 0;
+        }
+        .media-box {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        video {
+            width: 100%;
+            max-width: 700px;
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,255,0,0.3);
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 300px;
+        }
+        .magic-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            text-shadow: 1px 1px 2px black;
+        }
+        .magic-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+        #musicPlayer {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+            background: #333;
+            border-radius: 15px;
+            padding: 10px;
+        }
+        #backBtn {
+            display: none;
+            background: linear-gradient(45deg, #ff9900, #ff3366);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍄 作者吃了迷幻蘑菇后创作出以下内容 🍄</h1>
+        <div class="media-box">
+            <video id="mainVideo" controls>
+                <source id="videoSource"
+                        src="https://lily-yl1212.github.io/lilyylyl/WeChat_20250322220916.mp4"
+                        type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+
+            <div class="button-group">
+                <button class="magic-button" onclick="showProcessVideo()">
+                    🎬 查看艰辛创作过程
+                </button>
+                <button class="magic-button" onclick="toggleMusic()">
+                    🎧 欣赏迷惑小音乐（纯享版）
+                </button>
+                <button class="magic-button" id="backBtn" onclick="resetVideo()">
+                    🔙 返回魔幻主界面
+                </button>
+
+                <audio id="musicPlayer" controls>
+                    <source src="https://lily-yl1212.github.io/lilyylyl/midi%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E4%BD%9C%E9%9F%B3%E4%B9%90.wav" type="audio/wav">
+                    <source src="https://lily-yl1212.github.io/lilyylyl/midi%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E4%BD%9C%E9%9F%B3%E4%B9%90.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 视频源配置
+        const videoSources = {
+            main: {
+                src: 'https://lily-yl1212.github.io/lilyylyl/WeChat_20250322220916.mp4',
+                type: 'video/mp4'
+            },
+            process: {
+                src: 'https://lily-yl1212.github.io/lilyylyl/WeChat_20250322220833.mp4',
+                type: 'video/mp4'
+            }
+        }
+
+        // 视频切换功能
+        function switchVideo(source) {
+            const video = document.getElementById('mainVideo');
+            const sourceElement = document.getElementById('videoSource');
+
+            video.pause();
+            sourceElement.src = source.src;
+            sourceElement.type = source.type;
+            video.load();
+
+            video.play().catch(error => {
+                console.error('视频播放失败:', error);
+                alert('视频加载失败，请检查网络连接后重试');
+            });
+        }
+
+        function showProcessVideo() {
+            switchVideo(videoSources.process);
+            document.getElementById('backBtn').style.display = 'block';
+        }
+
+        function resetVideo() {
+            switchVideo(videoSources.main);
+            document.getElementById('backBtn').style.display = 'none';
+        }
+
+        // 音频控制功能
+        let isMusicPlaying = false;
+        const audioPlayer = document.getElementById('musicPlayer');
+
+        function toggleMusic() {
+            if (!isMusicPlaying) {
+                audioPlayer.style.display = 'block';
+                audioPlayer.play().then(() => {
+                    isMusicPlaying = true;
+                }).catch(error => {
+                    console.error('音频播放失败:', error);
+                    audioPlayer.style.display = 'none';
+                    alert('首次播放需要手动点击 ▶️ 按钮启动');
+                });
+            } else {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+                audioPlayer.style.display = 'none';
+                isMusicPlaying = false;
+            }
+        }
+    </script>
+</body>
+</html>
